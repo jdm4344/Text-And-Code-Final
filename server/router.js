@@ -1,15 +1,26 @@
 const controllers = require('./controllers');
-const mid = require('./middleware');
 
 const router = (app) => {
-  app.get('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
-  app.post('/login', mid.requiresSecure, mid.requiresLogout, controllers.Account.login);
-  app.get('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signupPage);
-  app.post('/signup', mid.requiresSecure, mid.requiresLogout, controllers.Account.signup);
-  app.get('/logout', mid.requiresLogin, controllers.Account.logout);
-  app.get('/maker', mid.requiresLogin, controllers.Domo.makerPage);
-  app.post('/maker', mid.requiresLogin, controllers.Domo.make);
-  app.get('/', mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
+  app.get('/page1', controllers.page1);
+  app.get('/page2', controllers.page2);
+  app.get('/page3', controllers.page3);
+  app.get('/page4', controllers.page4);
+  app.get('/getName', controllers.getName);
+  app.get('/findByName', controllers.searchName);
+  app.get('/updateDogAge', controllers.updateDogAge);
+
+  // whenever someone goes to the site without a path (AKA the home page), call controllers.index
+  app.get('/', controllers.index);
+
+  // catch for any other GET request
+  app.get('/*', controllers.notFound);
+
+  app.post('/setName', controllers.setName);
+
+  app.post('/updateLast', controllers.updateLast);
+
+  app.post('/setDogName', controllers.setDogName);
 };
 
+// export the router function
 module.exports = router;

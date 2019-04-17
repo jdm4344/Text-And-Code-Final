@@ -1,2 +1,2 @@
-module.exports.Account = require('./Account.js');
-module.exports.Domo = require('./Domo.js');
+module.exports.Cat = require('./Cat.js');
+module.exports.Dog = require('./Dog.js');
