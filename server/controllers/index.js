@@ -16,8 +16,8 @@ let lastAdded = new Cat(defaultData);
 const hostIndex = (req, res) => {
   res.render('index', {
     currentName: lastAdded.name,
-    title: 'Home',
-    pageName: 'Home Page',
+    title: 'A Living Word Machine',
+    pageName: 'Machine of Living Words',
   });
 };
 
@@ -58,16 +58,6 @@ const hostPage1 = (req, res) => {
   };
 
   readAllCats(req, res, callback);
-};
-
-// function to handle requests to the page2 page
-const hostPage2 = (req, res) => {
-  res.render('page2');
-};
-
-// function to handle requests to the page3 page
-const hostPage3 = (req, res) => {
-  res.render('page3');
 };
 
 const hostPage4 = (req, res) => {
@@ -245,10 +235,6 @@ const notFound = (req, res) => {
 
 module.exports = {
   index: hostIndex,
-  page1: hostPage1,
-  page2: hostPage2,
-  page3: hostPage3,
-  page4: hostPage4,
   readCat,
   getName,
   setName,

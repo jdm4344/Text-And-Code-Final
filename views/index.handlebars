@@ -1,25 +1,46 @@
 <html lang="en">
 <head>
   <meta charset="utf-8"/>
-  <!-- passed in variables in handlebars are surrounded by two curly braces like the following
-       Any variable you pass into res.render will be available by name in the template through
-       the curly braces
-  -->
   <title>{{title}}</title>
+  <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
 </head>
 <body>
-  <h1>Welcome to the {{pageName}}</h1>
-  
-  <!-- links or URLs are always GET resources as they are getting (retrieving) a resource -->
-  
-  <!-- passed in variables in handlebars are surrounded by two curly braces like the following
-       Any variable you pass into res.render will be available by name in the template through
-       the curly braces
-  -->
-  <p>The current set name is {{currentName}}</p>
-  <a href="/page1">Page 1</a>
-  <a href="/page2">Page 2</a>
-  <a href="/page3">Page 3</a>
-  <a href="/page4">Page 4</a>
+  <div class="banner">
+    <h1>Welcome to a <a href="https://www.biblegateway.com/passage/?search=Proverbs+18%3A21&version=AMP" target="blank">{{pageName}}</a></h1>
+  </div>
+
+  <section id="input">
+    <h1>The Intended Way:</h1>
+    <form id="manualForm" name="manualForm" action="/appendValue" method="POST">
+      <input id="zeroButton" type="button" value="0">
+      <input id="oneButton" type="button" value="1">
+      <label for="inputValue">Enter 8 Binary Digits: </label>
+      <input id="inputValue" type="number" name="inputValue" value="00000000" size="8" disabled>
+      <input class="formSubmit" type="submit" value="Send Data">
+    </form>
+
+    <h1>The Efficient Way:</h1>
+    <form id="efficientForm" name="efficientForm" action="/appendValue" method="POST">
+      <label for="inputValue">Enter 8 Binary Digits: </label>
+      <input id="inputValue" type="number" name="inputValue" value="00000000" size="8">
+      <input class="formSubmit" type="submit" value="Send Data">
+    </form>
+    <button id="changeFormButton">Do It the Easy Way</button>
+    <h3 id="errorMessage"></h3>
+  </section>
+  <section id="display">
+  {{#if words}}
+      <p>
+        {{this.words}}
+      </p>
+  {{else}}
+      <h3 id="noWords"><a href="https://web.archive.org/web/20130213215711/www.costik.com/nowords.html" target="blank">I have no words and I must display!</a></h3>
+  {{/if}}
+  </section>
+  <section id="about">
+    <div class="banner">
+      <h1>About</h1>
+    </div>
+  </section>
 </body>
 </html>

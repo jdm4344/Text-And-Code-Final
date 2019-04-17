@@ -1,0 +1,56 @@
+body {
+    background-color: gray;
+    text-align: center;
+}
+
+h1 {
+
+}
+
+h3 {
+
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+    color: red;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+/* Classes */
+.banner {
+    border: 2px solid white;
+    margin: 1em;
+}
+
+/* ID's */
+#input {
+    border: 2px solid black;
+    margin: 1em;
+}
+
+#display {
+    border: 2px solid black;
+    margin: 1em;
+}
+
+#about {
+    border: 2px solid black;
+    margin: 1em;
+}
+
+#noWords {
+    
+}

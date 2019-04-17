@@ -25,20 +25,15 @@ const port = process.env.PORT || process.env.NODE_PORT || 3000;
 
 const app = express();
 
-app.use('/assets', express.static(path.resolve(`${__dirname}/../client/`)));
-
+app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted/`)));
+app.use(favicon(`${__dirname}/../hosted/img/favicon.png`));
 app.use(compression());
-
 app.use(bodyParser.urlencoded({ extended: false }));
-
 app.use(bodyParser.json());
-
 app.engine('handlebars', expressHandlebars());
 app.set('view engine', 'handlebars');
 
 app.set('views', `${__dirname}/../views`);
-
-app.use(favicon(`${__dirname}/../client/img/favicon.png`));
 
 app.use(cookieParser());
 
