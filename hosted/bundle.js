@@ -57,6 +57,34 @@ var efficientSubmit = function efficientSubmit(e) {
   return false;
 };
 
+var zeroClick = function zeroClick() {
+  console.log("zero clicked");
+  var input = $('#inputValue');
+  var inputValue = input.val();
+
+  // If length < 8, append
+  if (inputValue.length < 8) {
+    input.val(inputValue.concat("0"));
+  } else {
+    // else, reset the value
+    input.val("");
+  }
+};
+
+var oneClick = function oneClick() {
+  console.log("one clicked");
+  var input = $('#inputValue');
+  var inputValue = $('#inputValue').val();
+
+  // If length < 8, append
+  if (inputValue.length < 8) {
+    input.val(inputValue.concat("1"));
+  } else {
+    // else, reset the value
+    input.val("");
+  }
+};
+
 $(document).ready(function () {
   // Setup default event handler for the manual submission form
   $("#manualForm").on("submit", manualSubmit);
@@ -73,6 +101,10 @@ $(document).ready(function () {
 
       // Attach event handler for the efficient form
       $("#efficientForm").on("submit", efficientSubmit);
+
+      $("#zeroButton").click(zeroClick);
+
+      $("#oneButton").click(oneClick);
     } else {
       $('#changeFormButton').val("Do It the Hard Way");
       manual = true;
@@ -81,34 +113,10 @@ $(document).ready(function () {
 
       // Attach event handler for the manual form
       $("#manualForm").on("submit", manualSubmit);
-    }
-  });
 
-  $("#zeroButton").click(function () {
-    console.log("zero clicked");
-    var input = $('#inputValue');
-    var inputValue = input.val();
+      $("#zeroButton").click(zeroClick);
 
-    // If length < 8, append
-    if (inputValue.length < 8) {
-      input.val(inputValue.concat("0"));
-    } else {
-      // else, reset the value
-      input.val("");
-    }
-  });
-
-  $("#oneButton").click(function () {
-    console.log("one clicked");
-    var input = $('#inputValue');
-    var inputValue = $('#inputValue').val();
-
-    // If length < 8, append
-    if (inputValue.length < 8) {
-      input.val(inputValue.concat("1"));
-    } else {
-      // else, reset the value
-      input.val("");
+      $("#oneButton").click(oneClick);
     }
   });
 });

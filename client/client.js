@@ -55,6 +55,36 @@ const efficientSubmit = (e) => {
 
   return false;
 };
+
+const zeroClick = () => {
+  console.log("zero clicked");
+  const input = $('#inputValue');
+  let inputValue = input.val();
+
+  // If length < 8, append
+  if(inputValue.length < 8) {
+    input.val(inputValue.concat("0"));
+  }
+  else { 
+    // else, reset the value
+    input.val("");
+  }
+};
+
+const oneClick = () => {
+  console.log("one clicked");
+  const input = $('#inputValue');
+  let inputValue = $('#inputValue').val();
+
+  // If length < 8, append
+  if(inputValue.length < 8) {
+    input.val(inputValue.concat("1"));
+  }
+  else { 
+    // else, reset the value
+    input.val("");
+  }
+};
   
 $(document).ready(() => {
   // Setup default event handler for the manual submission form
@@ -77,6 +107,10 @@ $(document).ready(() => {
 
       // Attach event handler for the efficient form
       $("#efficientForm").on("submit", efficientSubmit);
+
+      $("#zeroButton").click(zeroClick);
+
+      $("#oneButton").click(oneClick);
     }
     else {
       $('#changeFormButton').val("Do It the Hard Way");
@@ -93,36 +127,12 @@ $(document).ready(() => {
 
       // Attach event handler for the manual form
       $("#manualForm").on("submit", manualSubmit);
+      
+      $("#zeroButton").click(zeroClick);
+
+      $("#oneButton").click(oneClick);
     }
   });
 
-  $("#zeroButton").click(() => {
-    console.log("zero clicked");
-    const input = $('#inputValue');
-    let inputValue = input.val();
-
-    // If length < 8, append
-    if(inputValue.length < 8) {
-      input.val(inputValue.concat("0"));
-    }
-    else { 
-      // else, reset the value
-      input.val("");
-    }
-  });
-
-  $("#oneButton").click(() => {
-    console.log("one clicked");
-    const input = $('#inputValue');
-    let inputValue = $('#inputValue').val();
-
-    // If length < 8, append
-    if(inputValue.length < 8) {
-      input.val(inputValue.concat("1"));
-    }
-    else { 
-      // else, reset the value
-      input.val("");
-    }
-  });
+  
 });

@@ -233,14 +233,13 @@ const notFound = (req, res) => {
   });
 };
 
+const appendValue = (req, res) => {
+  console.log('appendValue');
+
+};
+
 module.exports = {
   index: hostIndex,
-  readCat,
-  getName,
-  setName,
-  updateLast,
-  searchName,
-  setDogName,
-  updateDogAge,
+  appendValue,
   notFound,
 };
