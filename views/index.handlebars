@@ -2,6 +2,7 @@
 <head>
   <meta charset="utf-8"/>
   <title>{{title}}</title>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
   <link rel="stylesheet" type="text/css" href="/assets/style.css"/>
 </head>
 <body>
@@ -15,19 +16,12 @@
       <input id="zeroButton" type="button" value="0">
       <input id="oneButton" type="button" value="1">
       <label for="inputValue">Enter 8 Binary Digits: </label>
-      <input id="inputValue" type="number" name="inputValue" value="00000000" size="8" disabled>
+      <input id="inputValue" type="number" name="inputValue" value="" size="8" disabled>
       <input class="formSubmit" type="submit" value="Send Data">
     </form>
-
-    <h1>The Efficient Way:</h1>
-    <form id="efficientForm" name="efficientForm" action="/appendValue" method="POST">
-      <label for="inputValue">Enter 8 Binary Digits: </label>
-      <input id="inputValue" type="number" name="inputValue" value="00000000" size="8">
-      <input class="formSubmit" type="submit" value="Send Data">
-    </form>
-    <button id="changeFormButton">Do It the Easy Way</button>
-    <h3 id="errorMessage"></h3>
   </section>
+  <input id="changeFormButton" type="button" value="Do It the Easy Way"/>
+  <h3 id="errorMessage"></h3>
   <section id="display">
   {{#if words}}
       <p>
@@ -42,5 +36,6 @@
       <h1>About</h1>
     </div>
   </section>
+  <script src="/assets/bundle.js"></script>
 </body>
 </html>
