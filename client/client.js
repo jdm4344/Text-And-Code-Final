@@ -28,9 +28,14 @@ const sendAjax = (action, data) => {
 const manualSubmit = (e) => {
   e.preventDefault();
 
-  if($("#inputValue").val() == '') {
+  let inputValue = $("#inputValue").val();
+
+  if(inputValue == '') {
     handleError("Input is required for submission");
     return false;
+  }
+  else if (inputValue.length = 0){
+    handleError("At least 8 digits (0 or 1) are required for submission");
   }
 
   // TODO: validation/conversion  
@@ -48,6 +53,8 @@ const efficientSubmit = (e) => {
     handleError("Input is required for submission");
     return false;
   }
+
+
 
   // TODO: validation/conversion
 

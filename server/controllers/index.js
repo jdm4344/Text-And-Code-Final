@@ -4,6 +4,8 @@ const Cat = models.Cat.CatModel;
 
 const Dog = models.Dog.DogModel;
 
+const Words = models.Words.WordsModel;
+
 // default fake data
 const defaultData = {
   name: 'unknown',
