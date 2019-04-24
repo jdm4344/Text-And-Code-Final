@@ -34,8 +34,9 @@ const manualSubmit = (e) => {
     handleError("Input is required for submission");
     return false;
   }
-  else if (inputValue.length = 0){
-    handleError("At least 8 digits (0 or 1) are required for submission");
+  else if (inputValue.length != 8){
+    handleError("At least 8 binary digits (0 or 1) are required for submission");
+    return false;
   }
 
   // TODO: validation/conversion  
@@ -49,12 +50,16 @@ const manualSubmit = (e) => {
 const efficientSubmit = (e) => {
   e.preventDefault();
 
-  if($("#inputValue").val() == '') {
+  let inputValue = $("#inputValue").val();
+
+  if(inputValue == '') {
     handleError("Input is required for submission");
     return false;
   }
-
-
+  else if (inputValue.length != 8){
+    handleError("At least 8 binary digits (0 or 1) are required for submission");
+    return false;
+  }
 
   // TODO: validation/conversion
 

@@ -15,6 +15,8 @@ const router = (app) => {
 
   // app.post('/setDogName', controllers.setDogName);
 
+  app.get('/getWords', controllers.getWords);
+
   app.post('/appendValue', controllers.appendValue);
 };
 

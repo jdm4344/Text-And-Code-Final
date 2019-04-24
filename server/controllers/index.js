@@ -14,15 +14,6 @@ const defaultData = {
 
 let lastAdded = new Cat(defaultData);
 
-// function to handle requests to the main page
-const hostIndex = (req, res) => {
-  res.render('index', {
-    currentName: lastAdded.name,
-    title: 'A Living Word Machine',
-    pageName: 'Machine of Living Words',
-  });
-};
-
 // function to find all cats on request.
 const readAllCats = (req, res, callback) => {
   Cat.find(callback);
@@ -72,11 +63,6 @@ const hostPage4 = (req, res) => {
   };
 
   readAllDogs(req, res, callback);
-};
-
-// function to handle get request to send the name
-const getName = (req, res) => {
-  res.json({ name: lastAdded.name });
 };
 
 // function to handle a request to set the name
@@ -228,6 +214,15 @@ const updateLast = (req, res) => {
   savePromise.catch(err => res.json({ err }));
 };
 
+// function to handle requests to the main page
+const hostIndex = (req, res) => {
+  res.render('index', {
+    currentName: lastAdded.name,
+    title: 'A Living Word Machine',
+    pageName: 'Machine of Living Words',
+  });
+};
+
 // function to handle a request to any non-real resources (404)
 const notFound = (req, res) => {
   res.status(404).render('notFound', {
@@ -238,10 +233,58 @@ const notFound = (req, res) => {
 const appendValue = (req, res) => {
   console.log('appendValue');
 
+  Words.getWords((err, doc) => {
+    if (err) {
+      return res.json({ err }); // if error, return it
+    }
+
+    // if no matches, create the words object
+    if (!doc) {
+      // return res.json({ err: 'No words were found' });
+
+      const wordData = {
+        words: req.body.inputValue,
+      };
+    
+      // create a new dog object
+      const newWords = new Words(wordData);
+    
+      // create new save promise for the database
+      const savePromise = newWords.save();
+    
+      savePromise.then(() => {
+        // return success
+        res.json({ words: wordData.words, err: "You created the first word!"});
+      });
+    
+      // if error, return it
+      savePromise.catch(err => res.json({ err }));
+    
+      return res;
+    }
+
+    let words = doc;
+  });
+};
+
+const getWords = (req, res) => {
+  Words.getWords((err, doc) => {
+    if (err) {
+      return res.json({ err }); // if error, return it
+    }
+
+    // if no matches, create the words object
+    if (!doc) {
+      return res.json({ err: 'No words were found' });
+    }
+
+    return res.json({ words: doc.words });
+  });
 };
 
 module.exports = {
   index: hostIndex,
+  getWords,
   appendValue,
   notFound,
 };
