@@ -16,7 +16,7 @@
       <input id="zeroButton" type="button" value="0">
       <input id="oneButton" type="button" value="1">
       <label for="inputValue">Enter 8 Binary Digits: </label>
-      <input id="inputValue" type="number" name="inputValue" value="" size="8" disabled>
+      <input id="inputValue" type="number" name="inputValue" value="" size="8">
       <input class="formSubmit" type="submit" value="Send Data">
     </form>
   </section>
@@ -31,7 +31,7 @@
       <h3 id="noWords"><a href="https://web.archive.org/web/20130213215711/www.costik.com/nowords.html" target="blank">I have no words and I must display!</a></h3>
   {{/if}}
   </section>
-  <div>{{err}}</div>
+  <div id="serverMessage">{{message}}</div>
   <section id="about">
     <div class="banner">
       <h1>About</h1>

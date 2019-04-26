@@ -5,6 +5,8 @@ const handleError = (message) => {
 };
   
 const sendAjax = (action, data) => {
+  console.log("sendAjax()");
+  console.log(data);
   $.ajax({
     cache: false,
     type: "POST",
@@ -30,6 +32,10 @@ const manualSubmit = (e) => {
 
   let inputValue = $("#inputValue").val();
 
+  console.log(inputValue);
+
+  const pattern = /(0|1){8}/;
+
   if(inputValue == '') {
     handleError("Input is required for submission");
     return false;
@@ -38,8 +44,10 @@ const manualSubmit = (e) => {
     handleError("At least 8 binary digits (0 or 1) are required for submission");
     return false;
   }
-
-  // TODO: validation/conversion  
+  else if(pattern.test(inputValue) == false) {
+    handleError("Input must consist of 0 or 1 only!");
+    return false;
+  }
 
   sendAjax($("#manualForm").attr("action"), $("#manualForm").serialize());
 
@@ -60,9 +68,11 @@ const efficientSubmit = (e) => {
     handleError("At least 8 binary digits (0 or 1) are required for submission");
     return false;
   }
-
-  // TODO: validation/conversion
-
+  else if(pattern.test(inputValue) == false) {
+    handleError("Input must consist of 0 or 1 only!");
+    return false;
+  }
+  
   sendAjax($("#efficientForm").attr("action"), $("#efficientForm").serialize());
 
   return false;
@@ -99,8 +109,10 @@ const oneClick = () => {
 };
   
 $(document).ready(() => {
-  // Setup default event handler for the manual submission form
-  $("#manualForm").on("submit", manualSubmit);  
+  // Setup default event handlers
+  $("#manualForm").on("submit", manualSubmit);
+  $("#zeroButton").click(zeroClick);
+  $("#oneButton").click(oneClick);
 
   // Changes between displaying the manual and the efficient forms on the page
   $("#changeFormButton").click(() => {
@@ -145,6 +157,4 @@ $(document).ready(() => {
       $("#oneButton").click(oneClick);
     }
   });
-
-  
 });

@@ -1,40 +1,42 @@
 const mongoose = require('mongoose');
 
-mongoose.promise = global.promise;
+mongoose.Promise = global.Promise;
 
 let WordsModel = {};
 
 const WordsSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        default: "LivingWords",
-    },
-    words: {
-        type: String,
-        required: true,
-        trim: false,
-    },
+  name: {
+    type: String,
+    required: true,
+    unique: true,
+  },
+  words: {
+    type: String,
+    required: true,
+    trim: false,
+  },
 });
 
 WordsSchema.statics.getWords = (callback) => {
-    const search = {
-        name: "LivingWords",
-    };
+  console.dir("in model getWords()");
+  const search = {
+    name: 'livingwords',
+  };
 
-    return WordsModel.findOne(search);
+  return WordsModel.findOne(search);
 };
 
-WordsSchema.statics.addLetter = (letter) => {
-    const wordsObj = WordsModel.findOne({
-        name: "LivingWords",
-    });
+WordsSchema.statics.addLetter = (letter, callback) => {
+  console.dir("in model addLetter()");
+  const wordsObj = WordsModel.findOne({
+    name: 'livingwords',
+  });
 
-    let newWords = wordsObj.words;
-    newWords += letter;
+  let newWords = wordsObj.words;
+  newWords += letter;
 
-    AccountModel.findOneAndUpdate(
-        { name: "LivingWords" },
+  WordsModel.findOneAndUpdate(
+        { name: 'livingwords' },
         { $set: { words: newWords } },
         (err) => {
           if (err) {
@@ -42,11 +44,11 @@ WordsSchema.statics.addLetter = (letter) => {
             return false;
           }
           return true;
-        }
+        },
       );
 };
 
-WordsModel = mongoose.model("Words", WordsSchema);
+WordsModel = mongoose.model('livingwords', WordsSchema);
 
 module.exports.WordsModel = WordsModel;
 module.exports.WordsSchema = WordsSchema;

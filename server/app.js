@@ -9,7 +9,7 @@ const expressHandlebars = require('express-handlebars');
 const router = require('./router.js');
 
 // MONGODB address to connect to.
-const dbURL = process.env.MONGODB_URI || 'mongodb://localhost:27017/simpleMVCExample';
+const dbURL = process.env.MONGODB_URI || 'mongodb://localhost:27017/LivingWords';
 
 // call mongoose's connect function and pass in the url.
 mongoose.connect(dbURL, (err) => {
