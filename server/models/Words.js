@@ -18,7 +18,7 @@ const WordsSchema = new mongoose.Schema({
 });
 
 WordsSchema.statics.getWords = (callback) => {
-  console.dir("in model getWords()");
+  // console.dir("in model getWords()");
   const search = {
     name: 'livingwords',
   };
@@ -26,55 +26,27 @@ WordsSchema.statics.getWords = (callback) => {
   return WordsModel.findOne(search, callback);
 };
 
-WordsSchema.statics.addLetter = (letter, callback) => {
-  console.dir("in model addLetter()");
-  WordsModel.findOne({ name: 'livingwords' }, (err, doc) => {
-    console.dir("wordsObj.words: ");
-    console.dir(doc.words);
-  
-    let newWords = doc.words;
-  
-    console.dir("Letter: " + letter);
-    console.dir("newWords: " + newWords);
-    newWords += letter;
-    console.dir("newWords: " + newWords);
-    
+WordsSchema.statics.addLetter = (letter, callback) =>
+  // console.dir("in model addLetter()");
+   WordsModel.findOne({ name: 'livingwords' }, (err, doc) => {
+    // console.dir("wordsObj.words: ");
+    // console.dir(doc.words);
+
+     let newWords = doc.words;
+
+    // console.dir("Letter: " + letter);
+    // console.dir("newWords: " + newWords);
+     newWords += letter;
+    // console.dir("newWords + letter: " + newWords);
+
     WordsModel.findOneAndUpdate(
         { name: 'livingwords' },
         { $set: { words: newWords } },
-        (err) => {
-          if (err) {
-            console.log(err);
-            return false;
-          }
-          return true;
-        },
-      )
-    }
+        { new: true },
+        callback,
+      );
+   },
   );
-  // console.dir("wordsObj.words: ");
-  // console.dir(wordsObj.words);
-
-  // let newWords = wordsObj.words;
-
-  // console.dir("Letter: " + letter);
-  // console.dir("newWords: " + newWords);
-  // newWords += letter;
-  // console.dir("newWords: " + newWords);
-
-  // return WordsModel.findOneAndUpdate(
-  //       { name: 'livingwords' },
-  //       { $set: { words: newWords } },
-  //       (err) => {
-  //         if (err) {
-  //           console.log(err);
-  //           return false;
-  //         }
-  //         return true;
-  //       },
-  //       callback,
-  //     );
-};
 
 WordsModel = mongoose.model('livingwords', WordsSchema);
 
