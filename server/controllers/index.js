@@ -260,17 +260,18 @@ const appendValue = (req, res) => {
       return res;
     }
 
-    console.dir("words exist, appending");
+    console.log("words exist, appending");
     // Else, words exist, so add it
-    Words.addLetter(req.body.inputValue, (error) => {
-          // errs, handle them
+    Words.addLetter(convertedInput, (error) => {
+      console.log("in controller addLetter() callback()");
+
+      // errs, handle them
       if (error) {
         return res.json({ message: error }); // if error, return it
       }
 
       return res.json({ message: 'Your letter was added' });
     });
-
 
     return res;
   });

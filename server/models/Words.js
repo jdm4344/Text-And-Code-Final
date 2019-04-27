@@ -23,19 +23,23 @@ WordsSchema.statics.getWords = (callback) => {
     name: 'livingwords',
   };
 
-  return WordsModel.findOne(search);
+  return WordsModel.findOne(search, callback);
 };
 
 WordsSchema.statics.addLetter = (letter, callback) => {
   console.dir("in model addLetter()");
-  const wordsObj = WordsModel.findOne({
-    name: 'livingwords',
-  });
-
-  let newWords = wordsObj.words;
-  newWords += letter;
-
-  WordsModel.findOneAndUpdate(
+  WordsModel.findOne({ name: 'livingwords' }, (err, doc) => {
+    console.dir("wordsObj.words: ");
+    console.dir(doc.words);
+  
+    let newWords = doc.words;
+  
+    console.dir("Letter: " + letter);
+    console.dir("newWords: " + newWords);
+    newWords += letter;
+    console.dir("newWords: " + newWords);
+    
+    WordsModel.findOneAndUpdate(
         { name: 'livingwords' },
         { $set: { words: newWords } },
         (err) => {
@@ -45,7 +49,31 @@ WordsSchema.statics.addLetter = (letter, callback) => {
           }
           return true;
         },
-      );
+      )
+    }
+  );
+  // console.dir("wordsObj.words: ");
+  // console.dir(wordsObj.words);
+
+  // let newWords = wordsObj.words;
+
+  // console.dir("Letter: " + letter);
+  // console.dir("newWords: " + newWords);
+  // newWords += letter;
+  // console.dir("newWords: " + newWords);
+
+  // return WordsModel.findOneAndUpdate(
+  //       { name: 'livingwords' },
+  //       { $set: { words: newWords } },
+  //       (err) => {
+  //         if (err) {
+  //           console.log(err);
+  //           return false;
+  //         }
+  //         return true;
+  //       },
+  //       callback,
+  //     );
 };
 
 WordsModel = mongoose.model('livingwords', WordsSchema);
