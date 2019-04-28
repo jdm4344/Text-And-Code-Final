@@ -60,6 +60,8 @@ a:visited {
 #display {
     border: 2px solid black;
     margin: 1em;
+    background-color: rgb(30, 30, 30);
+    color: rgb(212, 212, 212);
 }
 
 #display p {
@@ -74,6 +76,10 @@ a:visited {
 #about p{
     padding-left: 7em;
     padding-right: 7em;
+}
+
+#footer{
+    padding: 1em;
 }
 
 #manualForm {
