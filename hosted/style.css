@@ -92,14 +92,46 @@ a:visited {
     position: absolute;
     width: 3em;
     height: 3em;
-    left: 42%;
+    left: 46%;
 }
 
 #oneButton {
     position: absolute;
     width: 3em;
     height: 3em;
-    right: 42%;
+    right: 46%;
+}
+
+@media (max-width: 1100px) {
+    #zeroButton {
+        position: absolute;
+        width: 3em;
+        height: 3em;
+        left: 40%;
+    }
+    
+    #oneButton {
+        position: absolute;
+        width: 3em;
+        height: 3em;
+        right: 40%;
+    }
+}
+
+@media (max-width: 500px) {
+    #zeroButton {
+        position: absolute;
+        width: 3em;
+        height: 3em;
+        left: 35%;
+    }
+    
+    #oneButton {
+        position: absolute;
+        width: 3em;
+        height: 3em;
+        right: 35%;
+    }
 }
 
 #errorMessage{
