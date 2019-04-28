@@ -35,20 +35,20 @@ var sendAjax = function sendAjax(action, data) {
   });
 };
 
-var updatePage = function updatePage() {
-  console.log("updatePage()");
-  $.ajax({
-    cache: true,
-    type: "GET",
-    url: '/getWords',
-    dataType: "html",
-    success: function success(result, status, xhr) {
-      if (result.redirect) {
-        window.location = result.redirect;
-      }
-    }
-  });
-};
+// const updatePage = () => {
+//   console.log("updatePage()");
+//   $.ajax({
+//     cache: true,
+//     type: "GET",
+//     url: '/getWords',
+//     dataType: "html",
+//     success: (result, status, xhr) => {
+//       if(result.redirect) {
+//         window.location = result.redirect;
+//       }
+//     },
+//   });        
+// };
 
 // Submits data for the manual form
 var manualSubmit = function manualSubmit(e) {
@@ -73,34 +73,10 @@ var manualSubmit = function manualSubmit(e) {
 
   sendAjax($("#manualForm").attr("action"), $("#manualForm").serialize());
 
-  updatePage();
+  // updatePage();
 
   return false;
 };
-
-// Submits data for the efficient form
-// const efficientSubmit = (e) => {
-//   e.preventDefault();
-
-//   let inputValue = $("#inputValue").val();
-
-//   if(inputValue == '') {
-//     handleError("Input is required for submission");
-//     return false;
-//   }
-//   else if (inputValue.length != 8){
-//     handleError("At least 8 binary digits (0 or 1) are required for submission");
-//     return false;
-//   }
-//   else if(pattern.test(inputValue) == false) {
-//     handleError("Input must consist of 0 or 1 only!");
-//     return false;
-//   }
-
-//   sendAjax($("#efficientForm").attr("action"), $("#efficientForm").serialize());
-
-//   return false;
-// };
 
 var zeroClick = function zeroClick() {
   console.log("zero clicked");
@@ -135,48 +111,4 @@ $(document).ready(function () {
   $("#manualForm").on("submit", manualSubmit);
   $("#zeroButton").click(zeroClick);
   $("#oneButton").click(oneClick);
-
-  // // Changes between displaying the manual and the efficient forms on the page
-  // $("#changeFormButton").click(() => {
-  //   // console.log("change button clicked");
-  //   // console.log(manual);
-  //   if(manual) {
-  //     $('#changeFormButton').val("Do It the Easy Way");
-  //     manual = false;
-
-  //     $('#input').html(`<h1>The Efficient Way:</h1>
-  //     <form id="efficientForm" name="efficientForm" action="/appendValue" method="POST">
-  //       <label for="inputValue">Enter 8 Binary Digits: </label>
-  //       <input id="inputValue" type="number" name="inputValue" value="" size="8">
-  //       <input class="formSubmit" type="submit" value="Send Data">
-  //     </form>`);
-
-  //     // Attach event handler for the efficient form
-  //     $("#efficientForm").on("submit", efficientSubmit);
-
-  //     $("#zeroButton").click(zeroClick);
-
-  //     $("#oneButton").click(oneClick);
-  //   }
-  //   else {
-  //     $('#changeFormButton').val("Do It the Hard Way");
-  //     manual = true;
-
-  //     $('#input').html(`<h1>The Intended Way:</h1>
-  //     <form id="manualForm" name="manualForm" action="/appendValue" method="POST">
-  //       <input id="zeroButton" type="button" value="0">
-  //       <input id="oneButton" type="button" value="1">
-  //       <label for="inputValue">Enter 8 Binary Digits: </label>
-  //       <input id="inputValue" type="number" name="inputValue" value="00000000" size="8" disabled>
-  //       <input class="formSubmit" type="submit" value="Send Data">
-  //     </form>`);
-
-  //     // Attach event handler for the manual form
-  //     $("#manualForm").on("submit", manualSubmit);
-
-  //     $("#zeroButton").click(zeroClick);
-
-  //     $("#oneButton").click(oneClick);
-  //   }
-  // });
 });
