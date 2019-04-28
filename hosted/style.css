@@ -76,16 +76,30 @@ a:visited {
     padding-right: 7em;
 }
 
+#manualForm {
+    position: relative;
+}
+
+#inputValue{
+    margin-top: 5em;
+}
+
 #noWords {
     
 }
 
 #zeroButton {
-    
+    position: absolute;
+    width: 3em;
+    height: 3em;
+    left: 42%;
 }
 
 #oneButton {
-    
+    position: absolute;
+    width: 3em;
+    height: 3em;
+    right: 42%;
 }
 
 #errorMessage{
