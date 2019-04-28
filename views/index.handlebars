@@ -11,7 +11,7 @@
   </div>
 
   <section id="input">
-    <h1>The Intended Way:</h1>
+    <h1>Speak Life Here:</h1>
     <form id="manualForm" name="manualForm" action="/appendValue" method="POST">
       <input id="zeroButton" type="button" value="0">
       <input id="oneButton" type="button" value="1">
@@ -19,9 +19,28 @@
       <input id="inputValue" type="number" name="inputValue" value="" size="8">
       <input class="formSubmit" type="submit" value="Send Data">
     </form>
+    <h3 id="errorMessage"></h3>
   </section>
-  {{!-- <input id="changeFormButton" type="button" value="Do It the Easy Way"/> --}}
-  <h3 id="errorMessage"></h3>
+  <section id="about">
+    <div class="banner">
+      <h1>About</h1>
+      <h3><a href="https://web.archive.org/web/20130213215711/www.costik.com/nowords.html" target="blank">What is a word, anyhow?</a> And what is in name? A word is a thought given a name.</h3>
+      <p>
+        But what is this? This is a <i>Machine of Living Words</i>, an icon of inscription as well as an epitaph of technology from days gone by. 
+        Its function is far from that of the first computers, yet its form is indicative of them all the same. Just as those early machines required one to enter a string of commands
+        one value at a time through toggle switches or in bulk via punch cards before entering it, so to must the user of this "machine" enter the characters of each
+         word they wish to write in the basic format of binary.
+      </p>
+      <p>
+        Unlike Jonathan Basile's <a class="show" href="http://libraryofbabel.info/" target="blank">Library of Babel</a>, every single one of the words found here has
+        two inherent meanings. Each word here has a meaning that is established, one which comes from the intent of the one who wrote it, even if that meaning 
+        is no meaning at all. Each also has a meaning that is interpreted, one which comes from the one who reads it. The words found in the Library of Babel
+        have no established meaning, because those words are created by an algorithm and therefore are brought into existence without the involvement of a 
+        conscious decision, other than that of the person choosing to view the website of course. The words here, however, are brought into existence because
+        someone chose to place them here, and that is what gives them life.
+      </p>
+    </div>
+  </section>
   <section id="display">
   {{#if words}}
       <p>
@@ -32,11 +51,7 @@
   {{/if}}
   </section>
   <div id="serverMessage">{{message}}</div>
-  <section id="about">
-    <div class="banner">
-      <h1>About</h1>
-    </div>
-  </section>
+  
   <script src="/assets/bundle.js"></script>
 </body>
 </html>

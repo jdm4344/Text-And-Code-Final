@@ -1,6 +1,7 @@
 body {
     background-color: gray;
     text-align: center;
+    font-family: Consolas, 'Courier New', monospace;
 }
 
 h1 {
@@ -8,7 +9,7 @@ h1 {
 }
 
 h3 {
-
+    
 }
 
 a {
@@ -35,6 +36,21 @@ a:visited {
     margin: 1em;
 }
 
+.show{
+    color: white;
+    text-decoration: underline;
+}
+
+.show:hover{   
+    color: white;
+    text-decoration: underline;
+}
+
+.show:active {
+    text-decoration: underline;
+    color: red;
+}
+
 /* ID's */
 #input {
     border: 2px solid black;
@@ -46,9 +62,18 @@ a:visited {
     margin: 1em;
 }
 
+#display p {
+    padding: 3em;
+}
+
 #about {
     border: 2px solid black;
     margin: 1em;
+}
+
+#about p{
+    padding-left: 7em;
+    padding-right: 7em;
 }
 
 #noWords {
@@ -61,4 +86,8 @@ a:visited {
 
 #oneButton {
     
+}
+
+#errorMessage{
+    color:red;
 }

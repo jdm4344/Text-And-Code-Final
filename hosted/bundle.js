@@ -35,21 +35,6 @@ var sendAjax = function sendAjax(action, data) {
   });
 };
 
-// const updatePage = () => {
-//   console.log("updatePage()");
-//   $.ajax({
-//     cache: true,
-//     type: "GET",
-//     url: '/getWords',
-//     dataType: "html",
-//     success: (result, status, xhr) => {
-//       if(result.redirect) {
-//         window.location = result.redirect;
-//       }
-//     },
-//   });        
-// };
-
 // Submits data for the manual form
 var manualSubmit = function manualSubmit(e) {
   e.preventDefault();
@@ -72,8 +57,6 @@ var manualSubmit = function manualSubmit(e) {
   }
 
   sendAjax($("#manualForm").attr("action"), $("#manualForm").serialize());
-
-  // updatePage();
 
   return false;
 };
